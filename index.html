@@ -10,14 +10,22 @@
 </head>
 <body>
     <!-- Content -->
+    <a href="javascript:;" ng-click="toggleAudio()" class="toggle-audio" ng-class="{paused: isPaused}"></a>
     <canvas id="canvas-main" width="700" height="200"></canvas>
     <div id="html-text" class="text" ng-bind="text"></div>
 
     <!-- Audio -->
-    <audio id="audio">
+    <audio id="audio" preload="auto">
         <source src="backend/tracks.php?type=mp3" type="audio/mpeg" />
         <source src="backend/tracks.php?type=ogg" type="audio/ogg" />
     </audio>
+
+    <!-- Loader -->
+    <div id="loader" ng-class="{hidden: isReady}">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
 
     <!-- Script -->
     <script src="node_modules/angular/angular.min.js"></script>

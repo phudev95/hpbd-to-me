@@ -28,19 +28,30 @@ angular.module('HPBD-TO-ME', [])
             PIXI.Texture.fromImage("static/images/neon-star3.png"),
             PIXI.Texture.fromImage("static/images/neon-star4.png")
         ];
+        document.body.appendChild($scope.renderer.view);
 
         $scope.textCanvas = document.getElementById('canvas-main');
         $scope.textCtx  = $scope.textCanvas.getContext('2d');
         $scope.htmlText = document.getElementById("html-text");
         $scope.text = "I'M FINALLY 21";
 
+        $scope.isReady = false;
+        $scope.isPaused = false;
         $scope.audio = document.getElementById('audio');
         $scope.audio.volumn = 0.35;
-        $scope.audio.currentTime = 0.8;
+        $scope.audio.currentTime = 0.35;
         $scope.audio.play();
 
-        document.body.appendChild($scope.renderer.view);
-
+        $scope.toggleAudio = function () {
+            if ($scope.audio.paused) {
+                $scope.isPaused = false;
+                $scope.audio.play();
+            }
+            else {
+                $scope.isPaused = true;
+                $scope.audio.pause();
+            }
+        };
 
         /**
          * Helper create Start
@@ -134,22 +145,24 @@ angular.module('HPBD-TO-ME', [])
          * Run app after font loaded
          */
         $scope.exec = function () {
+            $scope.$apply(function(){
+                for (var q = 0; q < 600; q++) {
+                    $scope.createStar($scope.textures[q % 5]);
+                }
 
-            for (var q = 0; q < 600; q++) {
-                $scope.createStar($scope.textures[q % 5]);
-            }
+                for (var w = 0; w < 100; w++) {
+                    $scope.createGlow();
+                }
 
-            for (var w = 0; w < 100; w++) {
-                $scope.createGlow();
-            }
+                for (var e = 0; e < 100; e++) {
+                    setTimeout($scope.launchGlow, 10);
+                }
 
-            for (var e = 0; e < 100; e++) {
-                setTimeout($scope.launchGlow, 10);
-            }
-
-            $scope.resize();
-            window.addEventListener('resize', $scope.resize);
-            requestAnimationFrame($scope.animate);
+                $scope.isReady = true;
+                $scope.resize();
+                window.addEventListener('resize', $scope.resize);
+                requestAnimationFrame($scope.animate);
+            });
         };
 
         /**
@@ -241,7 +254,6 @@ angular.module('HPBD-TO-ME', [])
          * Helper resize
          */
         $scope.resize = function () {
-            console.warn('ooo');
             $scope.width = window.innerWidth;
             $scope.height = window.innerHeight;
             $scope.fontSize = $scope.width * 0.14;
