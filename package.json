@@ -1,0 +1,26 @@
+{
+  "name": "hpbd-to-me",
+  "version": "1.0.0",
+  "description": "Happy Birthday To Me - I'm 21",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phudev95/hpbd-to-me.git"
+  },
+  "keywords": [
+    "happy",
+    "birthday",
+    "canvas",
+    "javascript",
+    "pixi"
+  ],
+  "author": "phudev95@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phudev95/hpbd-to-me/issues"
+  },
+  "homepage": "https://github.com/phudev95/hpbd-to-me#readme"
+}
