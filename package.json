@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/phudev95/hpbd-to-me/issues"
   },
-  "homepage": "https://github.com/phudev95/hpbd-to-me#readme"
+  "homepage": "https://github.com/phudev95/hpbd-to-me#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "pixi.js": "^3.0.2"
+  }
 }
