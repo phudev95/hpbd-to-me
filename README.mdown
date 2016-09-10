@@ -1,5 +1,6 @@
 # Happy Birthday To Me
 
-@source: http://codepen.io/rachsmith/pen/YweZbG
-@author: Phu V. Phan
+### About
+@source: http://codepen.io/rachsmith/pen/YweZbG<br />
+@author: Phu V. Phan<br />
 @email: phudev95@gmail.com
