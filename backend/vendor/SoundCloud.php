@@ -34,7 +34,7 @@
 						$source_audio = sprintf($this->source_audio, $stream_http, $this->client_id);
 					}
 
-					header ('Location: ' . $source_audio);
+					return $source_audio;
 				}
 				else {
 					sleep(2);

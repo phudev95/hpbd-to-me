@@ -8,11 +8,22 @@
 	);
 
 	$type = 'mp3';
-	if (!empty($_GET['type']) && $_GET['type'] = 'ogg')
+	if (!empty($_GET['type']) && $_GET['type'] == 'ogg')
 		$type = 'ogg';
 
 	$track = $tracks[$type];
 
-	$SoundCloud = new SoundCloud;
-	$SoundCloud->exec($track);
+	// Check cache
+	$filename = base64_encode($track);
+	$filepath = 'log/' . $filename;
+	if (!$source_video = @file_get_contents($filepath)) {
+		$SoundCloud = new SoundCloud;
+		$source_video = $SoundCloud->exec($track);
+
+		$file = fopen($filepath, 'w+');
+		fwrite($file, $source_video);
+		fclose($file);
+	}
+
+	header("Location: $source_video");
 ?>
